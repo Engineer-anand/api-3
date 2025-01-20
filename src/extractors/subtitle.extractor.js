@@ -2,7 +2,7 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import baseUrl from "../utils/baseUrl.js";
 import { provider } from "../utils/provider.js";
-
+import cors from "cors";
 export async function extractSubtitle(id) {
   // console.log(id);
   const resp = await axios.get(`${baseUrl}/ajax/v2/episode/sources/?id=${id}`);
@@ -13,6 +13,12 @@ export async function extractSubtitle(id) {
       .pop()
       .replace(/\?k=\d?/g, "")}`
   );
+  app.use(
+  cors({
+    origin: allowedOrigins || "*",
+    methods: ["GET"],
+  })
+);
   const subtitles = source.data.tracks;
   const intro = source.data.intro;
   const outro = source.data.outro;
