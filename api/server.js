@@ -15,12 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const publicDir = path.join(dirname(dirname(__filename)), "public");
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",");
 
-app.use(
-  cors({
-    origin: allowedOrigins || "*",
-    methods: ["GET"],
-  })
-);
+app.use(cors());
 
 app.use(express.static(publicDir));
 
