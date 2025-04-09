@@ -1,2 +1,2 @@
-const baseUrl = "https://hianime.to";
+const baseUrl = "https://www.desidubanime.me";
 export default baseUrl;
